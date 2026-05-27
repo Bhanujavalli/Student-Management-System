@@ -1,22 +1,69 @@
 <html>
+    <head>
+        
+        <style>
+            nav{
+                background-color:black;
+                color:white;
+                height:50px;
+                text-align:center ;
+                line-height:50px;
+
+            }
+            nav a{
+                color:white;
+                text-decoration:none;
+                font-size:20px;
+                margin:0 15px;
+            }
+            nav a:hover{
+                color:yellow;
+            }
+            form{
+                border:1px solid black;
+                
+                width:300px;
+                margin:0 auto;
+                margin-top:50px;
+                padding:10px;
+                text-align:center;
+
+            }
+            label{
+                display:block;
+            }
+            p{
+                text-align:center;
+            }
+            
+        </style>
+    </head>
     <body>
         <nav>
         <ul>
-            <a href="index.html">Home</a>|
-            <a href="login.html">Login</a>|
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
             <a href="register.html">Register</a>
         </ul>
     </nav>
-        <h1>Register into Student Management System</h1>
-        <form >
-            UserName : <input type="text" name="username" required><br>
-            Password : <input type="password" name="password" required><br>
-            Email : <input type="email" name="email" required><br>
+        
+        <form action="login.html">
+            <h1>Register </h1>
+            <label for="username">UserName :</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password :</label>
+            <input type="password" id="password" name="password" required>
+            <label for="cpassword"> confirm Password :</label>
+            <input type="password" id="cpassword" name="password" required>
+            <label for="email">Email :</label>
+             <input type="email" id="email" name="email" required>
+             <br><br>
             <input type="submit" value="Register">
         </form>
+        <hr>
 
 
-        <h2>Already have an account? <a href="login.html">Login</a></h2>
+        <p>Already have an account? <a href="login.html">Login</a></p>
     </body>
 </html>
 

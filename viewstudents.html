@@ -1,10 +1,54 @@
 <html>
+    <head>
+        <style>
+            nav{
+                background-color:black;
+                color:white;
+                height:50px;
+                text-align:center ;
+                line-height:50px;
+
+            }
+            nav a{
+                color:white;
+                text-decoration:none;
+                font-size:20px;
+                margin:0 15px;
+            }
+            nav a:hover{
+                color:yellow;
+            }
+            h1,table{
+                text-align:center;
+            }
+            table{
+                border-collapse:collapse;
+                width:50%;
+                margin:0 auto;
+                border:1px solid black;
+
+            }
+            th,td{
+                border:1px solid black;
+                padding:8px;
+
+            }
+            td a{
+                text-decoration:none;
+                color:blue;
+            }
+            tr:nth-child(even){
+                background-color:#f2f2f2;
+            }
+            
+        </style>
+        </head>
     <body>
         <nav>
             <ul>
-                <a href="dashboard.html">Dashboard</a>|
-                <a href="addstudent.html">Add Student</a>|
-                <a href="viewstudents.html">View Students</a>|
+                <a href="dashboard.html">Dashboard</a>
+                <a href="addstudent.html">Add Student</a>
+                <a href="viewstudents.html">View Students</a>
                 <a href="logout.html">Logout</a>
             </ul>
         </nav>
@@ -23,6 +67,31 @@
                 <td><a href="editstudent.html">Edit</a> | <a href="deletestudent.html">Delete</a></td>
            
             </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>67890</td>
+                    <td>11</td>
+                    <td><a href="editstudent.html">Edit</a> | <a href="deletestudent.html">Delete</a></td>  
+        </tr>
+        <tr>
+            <td>Bob Johnson</td>
+            <td>54321</td>
+            <td>10</td>
+            <td><a href="editstudent.html">Edit</a> | <a href="deletestudent.html">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Alice Brown</td>
+            <td>98765</td>
+            <td>9</td>
+            <td><a href="editstudent.html">Edit</a> | <a href="deletestudent.html">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Charlie Davis</td>
+            <td>24680</td>
+            <td>8</td>
+            <td><a href="editstudent.html">Edit</a> | <a href="deletestudent.html">Delete</a></td>
+        </tr>
+
         </table>
     </body>
 </html>
