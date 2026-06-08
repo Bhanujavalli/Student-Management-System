@@ -42,6 +42,32 @@
             }
             
         </style>
+        <script>
+            window.onload=function(){
+                const tbody=document.querySelector("tbody");
+                const students=JSON.parse(localStorage.getItem("students")) ||[];
+                
+                
+                students.forEach((student,index) => {
+                    const row=document.createElement("tr");
+                    row.innerHTML=`
+                    <td>${student.name}</td>
+                    <td>${student.age}</td>
+                    <td>${student.grade}</td>
+                    <td><a href="editstudent.html?index=${index}">Edit</a> || <a href="#" onclick="deletestudent(${index})">Delete</a></td>`
+                    tbody.appendChild(row);
+                }); 
+            }
+            function deletestudent(index){
+                if(confirm("are u sure")){
+                    let students=JSON.parse(localStorage.getItem("students")) ||[];
+                    students.splice(index,1);
+                localStorage.setItem("students",JSON.stringify(students));
+                location.reload();
+                }
+            }
+
+        </script>
         </head>
     <body>
         <nav>
@@ -54,43 +80,18 @@
         </nav>
         <h1>Students List</h1>
         <table >
+            <thead>
             <tr>
                 <th>Name</th>
-                <th>Roll No</th>
+                <th>age</th>
                 <th>Grade</th>
                 <th>Action</th>
             </tr>
-            <tr>
-                <td>John Doe</td>
-                <td>12345</td>
-                <td>12</td>
-                <td><a href="editstudent.html">Edit</a> | <a href="deletestudent.html">Delete</a></td>
+            </thead>
+            <tbody>
+
+            </tbody>
            
-            </tr>
-                <tr>
-                    <td>Jane Smith</td>
-                    <td>67890</td>
-                    <td>11</td>
-                    <td><a href="editstudent.html">Edit</a> | <a href="deletestudent.html">Delete</a></td>  
-        </tr>
-        <tr>
-            <td>Bob Johnson</td>
-            <td>54321</td>
-            <td>10</td>
-            <td><a href="editstudent.html">Edit</a> | <a href="deletestudent.html">Delete</a></td>
-        </tr>
-        <tr>
-            <td>Alice Brown</td>
-            <td>98765</td>
-            <td>9</td>
-            <td><a href="editstudent.html">Edit</a> | <a href="deletestudent.html">Delete</a></td>
-        </tr>
-        <tr>
-            <td>Charlie Davis</td>
-            <td>24680</td>
-            <td>8</td>
-            <td><a href="editstudent.html">Edit</a> | <a href="deletestudent.html">Delete</a></td>
-        </tr>
 
         </table>
     </body>

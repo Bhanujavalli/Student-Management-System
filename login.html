@@ -34,6 +34,22 @@
             }
             
         </style>
+        <script>
+            function checkuser(){
+                event.preventDefault();
+                const username=document.getElementById("username").value;
+                const password=document.getElementById("password").value;
+                const user=JSON.parse(localStorage.getItem("user"));
+                if(user && username==user.username && password==user.password){
+                    alert("login success");
+                    window.location.href="dashboard.html"
+                    
+                }
+                else{
+                    alert("incorrect username or password");
+                }
+            }
+        </script>
     </head>
     <body>
         <nav>
@@ -44,7 +60,7 @@
         </ul>
     </nav>
         <h1>Login to Student Management System</h1>
-        <form action="dashboard.html">
+        <form onsubmit="checkuser()" >
             <label for="username">UserName :</label>
             <input type="text" id="username" name="username" required>
             <label for="password">Password :</label>

@@ -37,6 +37,25 @@
             }
             
         </style>
+        <script>
+            function storedata(){
+                event.preventDefault();
+                const username=document.getElementById("username").value;
+                const password=document.getElementById("password").value;
+                const cpw=document.getElementById("cpassword").value;
+                const email=document.getElementById("email").value;
+                if(password !==cpw){
+                    alert("password do not match");
+                }
+                const object={
+                    username:username,
+                    password:password,
+                    email:email
+                };
+                localStorage.setItem("user",JSON.stringify(object));
+                window.location.href="login.html";
+            }
+        </script>
     </head>
     <body>
         <nav>
@@ -47,7 +66,7 @@
         </ul>
     </nav>
         
-        <form action="login.html">
+        <form onsubmit="storedata()">
             <h1>Register </h1>
             <label for="username">UserName :</label>
             <input type="text" id="username" name="username" required>

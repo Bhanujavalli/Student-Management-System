@@ -30,6 +30,19 @@
             }
             
         </style>
+        <script>
+            function adduser(event){
+                event.preventDefault();
+                const name=document.getElementById("name").value;
+                const age=document.getElementById("age").value;
+                const grade=document.getElementById("grade").value;
+                
+                const students=JSON.parse(localStorage.getItem("students")) || [];
+                students.push({name,age,grade});
+                localStorage.setItem("students",JSON.stringify(students));
+                window.location.href="viewstudents.html";
+            }
+        </script>
         </head>
     <body>
         <nav>
@@ -40,13 +53,13 @@
                 <a href="logout.html">Logout</a>
             </ul>
         </nav>
-        <form action="viewstudents.html">
+        <form onsubmit="adduser(event)">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name"><br>
+            <input type="text" id="name" name="name" required><br>
             <label for="age">Age:</label>
-            <input type="text" id="age" name="age"><br>
+            <input type="text" id="age" name="age" required><br>
             <label for="grade">Grade:</label>
-            <input type="text" id="grade" name="grade"><br>
+            <input type="text" id="grade" name="grade" ><br>
             <button type="submit">Add Student</button>
             
         </form>
