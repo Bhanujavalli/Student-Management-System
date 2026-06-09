@@ -25,13 +25,14 @@
             form{
                 border:1px solid black;
                 width:300px;
-                margin-left:800px;
+                margin: 0 auto;
                 padding:20px;
 
             }
             label{
                 display:block;
             }
+           
             
         </style>
         <script>
@@ -60,6 +61,7 @@
         </ul>
     </nav>
         <h1>Login to Student Management System</h1>
+        <div class="container">
         <form onsubmit="checkuser()" >
             <label for="username">UserName :</label>
             <input type="text" id="username" name="username" required>
@@ -68,5 +70,6 @@
             <br>
             <button type="submit">Log in</button>
         </form>
+        </div>
     </body>
 </html>

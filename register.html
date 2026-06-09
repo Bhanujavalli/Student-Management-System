@@ -23,7 +23,7 @@
                 border:1px solid black;
                 
                 width:300px;
-                margin:0 auto;
+                margin:auto;
                 margin-top:50px;
                 padding:10px;
                 text-align:center;
@@ -36,6 +36,7 @@
                 text-align:center;
             }
             
+            
         </style>
         <script>
             function storedata(){
@@ -44,8 +45,17 @@
                 const password=document.getElementById("password").value;
                 const cpw=document.getElementById("cpassword").value;
                 const email=document.getElementById("email").value;
+                if(!(/[A-Z]/).test(password)){
+                   alert("password must contain capital letters");
+                    return;
+                }
+                  if(!(/[0-9]/).test(password)){
+                   alert("password must contain numbers");
+                    return;
+                }
                 if(password !==cpw){
                     alert("password do not match");
+                    return;
                 }
                 const object={
                     username:username,
@@ -54,6 +64,7 @@
                 };
                 localStorage.setItem("user",JSON.stringify(object));
                 window.location.href="login.html";
+            
             }
         </script>
     </head>
