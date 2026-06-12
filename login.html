@@ -36,19 +36,27 @@
             
         </style>
         <script>
-            function checkuser(){
+           async function checkuser(event){
                 event.preventDefault();
                 const username=document.getElementById("username").value;
                 const password=document.getElementById("password").value;
-                const user=JSON.parse(localStorage.getItem("user"));
-                if(user && username==user.username && password==user.password){
-                    alert("login success");
-                    window.location.href="dashboard.html"
+                
+                try{
+                    const res = await fetch('http://localhost:3000/users');
+                    const user= await res.json();
+                    if(user.some(s => s.username == username && s.password == password)){
+                         window.location.href="dashboard.html"
+                    }
+                   
                     
-                }
+                
                 else{
                     alert("incorrect username or password");
                 }
+                  } 
+                  catch(error){
+                    alert("unable to load");
+                  }  
             }
         </script>
     </head>
@@ -62,7 +70,7 @@
     </nav>
         <h1>Login to Student Management System</h1>
         <div class="container">
-        <form onsubmit="checkuser()" >
+        <form onsubmit="checkuser(event)" >
             <label for="username">UserName :</label>
             <input type="text" id="username" name="username" required>
             <label for="password">Password :</label>

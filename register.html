@@ -53,17 +53,26 @@
                    alert("password must contain numbers");
                     return;
                 }
-                if(password !==cpw){
-                    alert("password do not match");
-                    return;
-                }
-                const object={
+                 const user={
                     username:username,
                     password:password,
                     email:email
                 };
-                localStorage.setItem("user",JSON.stringify(object));
-                window.location.href="login.html";
+                if(password !==cpw){
+                    alert("password do not match");
+                    return;
+                }
+               else{
+                fetch('http://localhost:3000/users',
+                    {
+                        method : "POST",
+                        body : JSON.stringify(user)
+                    }
+                
+                )
+                window.location.href='login.html'
+               }
+                
             
             }
         </script>

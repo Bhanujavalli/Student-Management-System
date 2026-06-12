@@ -31,26 +31,35 @@
             
         </style>
         <script>
-            window.onload=function(){
-                let students=JSON.parse(localStorage.getItem("students")) ||[];
+            window.onload=async function(){
                 const params=new URLSearchParams(window.location.search);
-                const index=params.get("index");
-                document.getElementById("name").value=students[index].name;
-               document.getElementById("age").value=students[index].age;
-                document.getElementById("grade").value=students[index].grade;
+                const id=params.get('id');
+                const res=await fetch(`http://localhost:3000/students/${id}`)
+                const student=await res.json();
+                document.getElementById("name").value=student.name;
+               document.getElementById("age").value=student.age;
+                document.getElementById("grade").value=student.grade;
             }
-            function updatestudent(event){
+            async function updatestudent(event){
                 event.preventDefault();
-                let students=JSON.parse(localStorage.getItem("students")) ||[];
                 const params=new URLSearchParams(window.location.search);
-                const index=params.get("index");
-                students[index]={
-                    name:document.getElementById("name").value,
-                    age:document.getElementById("age").value,
-                    grade:document.getElementById("grade").value
-                };
-                localStorage.setItem("students",JSON.stringify(students));
-                window.location.href="viewstudents.html";
+                const id=params.get('id');
+                const name=document.getElementById("name").value;
+                const age=document.getElementById("age").value;
+                const grade=document.getElementById("grade").value;
+                const student={name:name,age:age,grade:grade};
+                 const res=await fetch(`http://localhost:3000/students/${id}`,
+                    {method:"PUT",
+                        body:JSON.stringify(student)
+                    }
+
+                );
+                if(res.ok){
+                     window.location.href="viewstudents.html";
+                }
+                else{
+                    alert("error");
+                }
             }
         </script>
         </head>

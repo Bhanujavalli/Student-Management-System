@@ -43,9 +43,10 @@
             
         </style>
         <script>
-            window.onload=function(){
+            window.onload= async function(){
                 const tbody=document.querySelector("tbody");
-                const students=JSON.parse(localStorage.getItem("students")) ||[];
+                const res= await fetch('http://localhost:3000/students');
+                const students= await res.json();
                 
                 
                 students.forEach((student,index) => {
@@ -54,17 +55,22 @@
                     <td>${student.name}</td>
                     <td>${student.age}</td>
                     <td>${student.grade}</td>
-                    <td><a href="editstudent.html?index=${index}">Edit</a> || <a href="#" onclick="deletestudent(${index})">Delete</a></td>`
+                    <td><a href="editstudent.html?id=${student.id}">Edit</a> || <a href="#" onclick="deletestudent('${student.id}')">Delete</a></td>`
                     tbody.appendChild(row);
                 }); 
             }
-            function deletestudent(index){
+            async function deletestudent(id){
                 if(confirm("are u sure")){
-                    let students=JSON.parse(localStorage.getItem("students")) ||[];
-                    students.splice(index,1);
-                localStorage.setItem("students",JSON.stringify(students));
+                    const res= await fetch(`http://localhost:3000/students/${id}`,
+                        {method : "DELETE"}
+                    );
+                if(res.ok){
                 location.reload();
                 }
+                else{
+                    alert("error");
+                }
+            }
             }
 
         </script>
