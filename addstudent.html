@@ -37,8 +37,11 @@
                 const age=document.getElementById("age").value;
                 const grade=document.getElementById("grade").value;
                 const student={name:name,age:age,grade:grade};
-                fetch('http://localhost:3000/students',{
+                fetch('http://localhost:4000/students',{
                     method : "POST",
+                                         headers: {
+        "Content-Type": "application/json"
+    },
                     body : JSON.stringify(student)
                 })
                 window.location.href="viewstudents.html";

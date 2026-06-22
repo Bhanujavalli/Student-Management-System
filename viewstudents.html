@@ -45,7 +45,7 @@
         <script>
             window.onload= async function(){
                 const tbody=document.querySelector("tbody");
-                const res= await fetch('http://localhost:3000/students');
+                const res= await fetch('http://localhost:4000/students');
                 const students= await res.json();
                 
                 
@@ -61,7 +61,7 @@
             }
             async function deletestudent(id){
                 if(confirm("are u sure")){
-                    const res= await fetch(`http://localhost:3000/students/${id}`,
+                    const res= await fetch(`http://localhost:4000/students/${id}`,
                         {method : "DELETE"}
                     );
                 if(res.ok){
